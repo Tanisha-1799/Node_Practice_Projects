@@ -54,13 +54,11 @@ if(input[2]=='add'){
     console.log("Invalid Input !!");
 }
 
-const path=require('path');
-//gives the pathof current directory
-const dirPath=path.join(__dirname,"files");
-fs.writeFileSync(dirPath+"/hello.txt","A simple file !!");
 
-fs.readdir(dirPath,(err,files)=>{
-    //reurns the array of files inside this directory
-    console.log("File name is ",files);
-})
+
+
+
+
+
+
 
