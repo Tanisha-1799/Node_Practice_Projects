@@ -23,6 +23,33 @@ let result=arr.filter((item)=>{
 });
 console.log(result);
 
+//making use of file system non-global core module
+const fs=require('fs');
+
+fs.writeFileSync("First.txt","We have made this file by using the core module !!");
+
+//both of these function work in same way.
+function test1(a){
+    return a*10;
+}
+//conversion into an arrow function
+ const test2=(a)=>a*10;
 
 
+ const colors=require('colors');
+ console.log("Hello !!!".yellow);
+ console.log("Tanisha".red);
 
+ //explaining process object of node js
+ //By this we can get the command line inputs 
+ //console.log(process.argv[2]);
+
+//now we will be using it to get the file to be created and the content of that file from command line input
+const input=process.argv;
+if(input[2]=='add'){
+    fs.writeFileSync(input[3],input[4]);
+}else if(input[2]=='remove'){
+    fs.unlinkSync(input[3]);
+}else{
+    console.log("Invalid Input !!");
+}

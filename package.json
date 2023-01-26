@@ -9,6 +9,7 @@
   "author": "Tanisha Trivedi",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
