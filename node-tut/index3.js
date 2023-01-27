@@ -22,4 +22,5 @@ const filePath=`${dirPath}/apple.txt`;
 
 
 //deleting the file
-fs.unlinkSync(filePath);
+//fs.unlinkSync(filePath);
+
