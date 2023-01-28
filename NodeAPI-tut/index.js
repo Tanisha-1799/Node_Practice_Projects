@@ -1,85 +1,63 @@
-const mongoose=require('mongoose');
+const express=require('express');
+require('./config');
+const Product=require('./product');
 
-//making function to get data from db
+const app=express();
+app.use(express.json());
 
-const SaveInDb=async ()=>{
-    await mongoose.connect("mongodb://localhost:27017/e-comm");
-    //creating a schema
-    const ProductSchema=new mongoose.Schema({
-        name:String,
-        brand:String,
-        price:Number,
-        category:String
-    });
-    //Creating model
-    const ProductModel=mongoose.model('products',ProductSchema);
-    //storing static data
-    let data=new ProductModel({name:"m8",brand:"apple",price:1000,category:"mobile"});
+//Post API
+app.post("/create",async(req,res)=>{
+    //console.log(req.body)
+    //res.send("Done!");
+    //getting the data from the body that is to be stored in the db
+    let data=new Product(req.body);
+    //saving the data in the db
     let result=await data.save();
-    console.log(result);
+    res.send("Data stored successfully !");
 
-}
-//SaveInDb();
+});
 
+//Get API
+app.get("/list",async (req,res)=>{
+    let data=await Product.find();
+    res.send(data);
+});
 
-//Updating the record in db
-const updateInDb=async ()=>{
-    await mongoose.connect("mongodb://localhost:27017/e-comm");
-    //creating a schema
-    const ProductSchema=new mongoose.Schema({
-        name:String,
-        brand:String,
-        price:Number,
-        category:String
-    });
-    //Creating model
-    const ProductModel=mongoose.model('products',ProductSchema);
-    let data=await ProductModel.updateOne(
-        {name:"A2-z"},
+//Delete API
+//deleting according to the passed id
+app.delete("/delete/:_id",async (req,res)=>{
+    let data=await Product.deleteOne(req.params);
+    res.send(data);
+
+});
+
+//put API
+//to update data
+app.put("/update/:_id",async (req,res)=>{
+    let data=await Product.updateOne(
+        req.params,
         {
-            $set:{name:"A2-z Pro max",price:300}
+            $set:req.body
         }
-    )
-    console.log(data);
+        );
+    res.send(data);
 
-}
+});
 
-//updateInDb();
+//search API
 
-//Deleting the record in DB
-const deleteInDb=async ()=>{
-    await mongoose.connect("mongodb://localhost:27017/e-comm");
-    //creating a schema
-    const ProductSchema=new mongoose.Schema({
-        name:String,
-        brand:String,
-        price:Number,
-        category:String
-    });
-    //Creating model
-    const ProductModel=mongoose.model('products',ProductSchema);
-    let data=await ProductModel.deleteOne({name:"m8"});
-    console.log(data);
-}
-//deleteInDb();
+app.get("/search/:key",async (req,res)=>{
 
-//Finding record in Db
-const findInDb=async ()=>{
-    await mongoose.connect("mongodb://localhost:27017/e-comm");
-    //creating a schema
-    const ProductSchema=new mongoose.Schema({
-        name:String,
-        brand:String,
-        price:Number,
-        category:String
-    });
-    //Creating model
-    const ProductModel=mongoose.model('products',ProductSchema);
-    //reading data from db
-    //reads all records
-    //let data=await ProductModel.find();
-    //to read specific record
-    let data=await ProductModel.find({name:"A2-z Pro max"});
-    console.log(data);
-};
-//findInDb();
+    let data=await Product.find(
+        {
+            "$or":[
+                {"brand":{$regex:req.params.key}},
+                {"name":{$regex:req.params.key}},
+                {"category":{$regex:req.params.key}}
+            ]
+        }
+    );//find returns promise so using await
+    res.send(data);
+});
+
+app.listen(4200);
