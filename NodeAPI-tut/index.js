@@ -60,4 +60,4 @@ app.get("/search/:key",async (req,res)=>{
     res.send(data);
 });
 
-app.listen(5000);
+app.listen(4200);
