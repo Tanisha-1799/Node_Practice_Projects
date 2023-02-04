@@ -8,4 +8,5 @@ const ProductSchema=new mongoose.Schema({
     category:String
 });
 //Creating model
+//give the name of your collection here
 module.exports=mongoose.model('products',ProductSchema);
