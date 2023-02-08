@@ -1,6 +1,7 @@
 import './App.css';
 import Nav from './Nav';
 import {Routes,Route,BrowserRouter} from 'react-router-dom';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/profile' element={<h1>Profile Component !</h1>}/>
         </Routes>
     </BrowserRouter>
+    <Footer />
             
     </div>
   );

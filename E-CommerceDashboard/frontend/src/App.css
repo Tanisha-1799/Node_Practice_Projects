@@ -3,6 +3,19 @@
   padding:10px;
 }
 
+.nav-ul{
+  paddding:5px;
+  margin:0;
+  background-color:skyblue;
+
+}
+
+.nav-ul li a{
+  color:white;
+  padding:5px;
+  text-decoration:none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
