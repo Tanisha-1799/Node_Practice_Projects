@@ -26,6 +26,32 @@
   margin: 0;
 }
 
+.container-style{
+  margin-left: 30%;
+  
+}
+
+.heading-style{
+  margin-left: 10%;
+}
+
+.input-style{
+
+  display: block;
+  margin: 25px;
+  padding: 7px;
+  width: 300px;
+  border: 1px solid skyblue;
+}
+.button-style{
+  margin:25px;
+  padding: 10px;
+  width: 300px;
+  background-color: skyblue;
+  border: 1px solid;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
