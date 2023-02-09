@@ -1,13 +1,16 @@
 import React,{useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const SignUp=()=>{
 
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const navigate=useNavigate();
 
     const collectData=async ()=>{
        // alert(name+" "+email+" "+password);
+       //Integrating sign up api to react
        let result=await fetch('http://localhost:5000/register',{
         method:'post',
         body:JSON.stringify({name,email,password}),
@@ -17,6 +20,9 @@ const SignUp=()=>{
        })
        result=await result.json();
        console.warn(result);
+       if(result){
+        navigate('/');
+       }
     }
 
     return(
