@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 const SignUp=()=>{
@@ -6,7 +6,13 @@ const SignUp=()=>{
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const navigate=useNavigate();
+    const navigate = useNavigate();
+    useEffect(()=>{
+        const auth=localStorage.getItem("user");
+        if(auth){
+            navigate('/')
+        }
+    })
 
     const collectData=async ()=>{
        // alert(name+" "+email+" "+password);
