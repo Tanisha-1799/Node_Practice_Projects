@@ -17,7 +17,8 @@ const Nav=()=>{
                 <li><Link to="/update">Update Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
                 <li>{auth ? <Link onClick={logout} to="/signUp">Logout</Link>:
-                <Link to="/signUp">SignUp</Link>}</li>
+                <Link to="/signUp">Sign Up</Link>}</li>
+                <li> <Link to="/logIn">Log In</Link></li>
             </ul>
         </div>
     )
