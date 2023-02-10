@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LogIn=()=>{
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+
+    const handleLogin=()=>{
+        alert(email+" "+password);
+    }
+
     return(
-        <div>
-            <h1>LogIn Page !!!</h1>
+        <div className='login'>
+         <h1 className='heading-style'>Login</h1>
+        <input type="text" className='input-style' placeholder="Enter Email"
+        onChange={(e)=>setEmail(e.target.value)} value={email} />
+        <input type="password" className='input-style' placeholder="Enter Password"
+         onChange={(e)=>setPassword(e.target.value)} value={password}/>
+        <button className='button-style' onClick={handleLogin}>Login</button>
+            
         </div>
     )
 }
