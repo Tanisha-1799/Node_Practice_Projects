@@ -20,6 +20,8 @@ const SignUp=()=>{
        })
        result=await result.json();
        console.warn(result);
+       //storing data in the local storage of the browser
+       localStorage.setItem("user",JSON.stringify(result));
        if(result){
         navigate('/');
        }
