@@ -11,7 +11,7 @@ const LogIn=()=>{
         if(auth){
             navigate('/')
         }
-    },[]);
+    });
 
     const handleLogin= async ()=>{
         let result=await fetch("http://localhost:5000/login",{

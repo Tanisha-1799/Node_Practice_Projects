@@ -11,22 +11,26 @@ const Nav=()=>{
     
     return(
         <div>
-            <ul className='nav-ul'>
+        <img alt='logo'
+        className='logo' 
+        src='/logo_img.jpg' />
+               
+            {
+                 auth ? <ul className='nav-ul'>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/add">Add Product</Link></li>
                 <li><Link to="/update">Update Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
-                
-                {
-                    auth ? <li><Link onClick={logout} to="/signUp">Logout</Link></li>
-                    :
-                    <>
+                <li><Link onClick={logout} to="/signUp">Logout {JSON.parse(auth).name}</Link></li>       
+               
+            </ul>
+            :
+            <ul className='nav-ul nav-right'>
                     <li><Link to="/signUp">Sign Up</Link></li>
                     <li><Link to="/logIn">Log In</Link></li>
 
-                    </>
-                }
             </ul>
+            }
         </div>
     )
 }
