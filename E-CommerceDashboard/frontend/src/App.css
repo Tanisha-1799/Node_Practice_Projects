@@ -13,6 +13,7 @@
 .nav-ul li a{
   color:white;
   padding:5px;
+  font-weight: bold;
   text-decoration:none;
 }
 
@@ -80,7 +81,7 @@
 .user-name{
   color: white;
   font-weight: bold;
-  margin-left: 800px !important;
+  margin-left: 750px !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
