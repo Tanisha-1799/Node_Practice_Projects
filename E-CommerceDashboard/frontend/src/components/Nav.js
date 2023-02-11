@@ -16,9 +16,16 @@ const Nav=()=>{
                 <li><Link to="/add">Add Product</Link></li>
                 <li><Link to="/update">Update Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
-                <li>{auth ? <Link onClick={logout} to="/signUp">Logout</Link>:
-                <Link to="/signUp">Sign Up</Link>}</li>
-                <li> <Link to="/logIn">Log In</Link></li>
+                
+                {
+                    auth ? <li><Link onClick={logout} to="/signUp">Logout</Link></li>
+                    :
+                    <>
+                    <li><Link to="/signUp">Sign Up</Link></li>
+                    <li><Link to="/logIn">Log In</Link></li>
+
+                    </>
+                }
             </ul>
         </div>
     )
