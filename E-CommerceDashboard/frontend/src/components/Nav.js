@@ -22,11 +22,11 @@ const Nav=()=>{
                 <li><Link to="/update">Update Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
                 <li><Link onClick={logout} to="/signUp">Logout</Link></li>  
-                <li className='user-name'>{JSON.parse(auth).name}</li>
+                <li className='user-name right'>{JSON.parse(auth).name}
                 <img alt='logo'
                      className='profile-img' 
                      src='/prr1.jpg' />     
-               
+               </li>
             </ul>
             :
             <ul className='nav-ul nav-right'>
