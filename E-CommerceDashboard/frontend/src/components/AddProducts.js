@@ -10,6 +10,7 @@ const AddProducts=()=>{
        // alert(name+" "+price+" "+category+" "+company);
        //integrating api here, sending data to the database
         //taking the id of the current user from local storage
+        //since the dat in the local storage is in json form so we have to stringify it
         const userId=JSON.stringify(localStorage.getItem("user"))._id;
         let result=await fetch('http://localhost:5000/add-product',{
             method:'post',
