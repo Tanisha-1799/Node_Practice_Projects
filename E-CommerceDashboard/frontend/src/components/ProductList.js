@@ -17,17 +17,17 @@ const ProductList = () => {
     <div className="product-List">
       <h1>Product List </h1>
       <ul>
-        <li>S.no</li>
-        <li>Name</li>
-        <li>Price</li>
-        <li>Category</li>
-        <li>Company</li>
+        <li><h3>S.no</h3></li>
+        <li><h3>Name</h3></li>
+        <li><h3>Price</h3></li>
+        <li><h3>Category</h3></li>
+        <li><h3>Company</h3></li>
       </ul>
       {products.map((item,index) => 
         <ul>
           <li>{index+1}</li>
           <li>{item.name}</li>
-          <li>{item.price}</li>
+          <li>$ {item.price}</li>
           <li>{item.category}</li>
           <li>{item.company}</li>
         </ul>
