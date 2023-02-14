@@ -8,6 +8,7 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 
+//SignUp Api
 app.post("/register",async (req,res)=>{
     let user=new User(req.body);
     let result=await user.save();
@@ -17,6 +18,8 @@ app.post("/register",async (req,res)=>{
 })
 
 
+
+//Login Api
 app.post("/login",async (req,res)=>{
     if(req.body.email && req.body.password){
         let user=await User.findOne(req.body).select("-password");
@@ -31,12 +34,15 @@ app.post("/login",async (req,res)=>{
 })
 
 
+//API to add products to the database
 app.post('/add-product',async (req,res)=>{
     let product=new Product(req.body);
     let result=await product.save();
     res.send(result);
 });
 
+
+//api to display  the product list from the database
 app.get('/products',async (req,res)=>{
     let products=await Product.find();
     if(products.length>0){
@@ -48,6 +54,8 @@ app.get('/products',async (req,res)=>{
 
 })
 
+
+//Api to delete a specific product from database
 app.delete("/product/:id",async (req,res)=>{
    
     const result=await Product.deleteOne({_id:req.params.id});
