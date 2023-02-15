@@ -116,6 +116,21 @@
   margin: 0;
 }
 
+.update-button{
+  margin-left: 10px;
+  
+}
+
+.update-button a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.button-style{
+  font-weight: bold;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
