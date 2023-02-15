@@ -19,7 +19,9 @@ const ProductList = () => {
     });
     result=await result.json();
     if(result){
+      alert("Product deleted successfully !!")
       getProducts();
+    
     }
 
   }
