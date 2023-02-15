@@ -46,7 +46,7 @@ const ProductList = () => {
           <li>{item.category}</li>
           <li>{item.company}</li>
           <li>
-          <button className="button-style" onClick={()=>deleteProduct(item._id)}>Delete</button>
+          <button className="button-style-2" onClick={()=>deleteProduct(item._id)}>Delete</button>
           <button className="update-button"><Link to="/update">Update</Link></button>
           </li>
         </ul>
