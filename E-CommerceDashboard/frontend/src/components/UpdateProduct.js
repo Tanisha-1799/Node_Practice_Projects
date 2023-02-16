@@ -23,10 +23,20 @@ const UpdateProduct=()=>{
         setCompany(result.company);
     }
     
-    //const navigate=useNavigate();
+    const navigate=useNavigate();
 
     const updateproduct=async () =>{
-        alert(name+price+company+category);
+        //alert(name+price+company+category);
+        let result=await fetch(`http://localhost:5000/product/${params.id}`,{
+            method:'Put',
+            body:JSON.stringify({name,price,category,company}),
+            headers:{
+                'Content-Type':"application/json"
+            }
+        });
+        result=await result.json();
+        navigate("/");
+
 
     }
 
