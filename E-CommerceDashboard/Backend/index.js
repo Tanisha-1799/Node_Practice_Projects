@@ -60,6 +60,16 @@ app.delete("/product/:id",async (req,res)=>{
    
     const result=await Product.deleteOne({_id:req.params.id});
     res.send(result);
+});
+
+//Api to get the product that has a specific id
+app.get("/product/:id",async (req,res)=>{
+    let result=await Product.findOne({_id:req.params.id});
+    if(result){
+        res.send(result);
+    }else{
+        res.send({result:"No record found"})
+    }
 })
 
 
