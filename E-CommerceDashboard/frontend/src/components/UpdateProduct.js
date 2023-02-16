@@ -35,6 +35,7 @@ const UpdateProduct=()=>{
             }
         });
         result=await result.json();
+        alert("Updated the product successfully !!");
         navigate("/");
 
 
