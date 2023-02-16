@@ -70,6 +70,19 @@ app.get("/product/:id",async (req,res)=>{
     }else{
         res.send({result:"No record found"})
     }
+});
+
+//api to update the product
+app.put("/product/:id",async (req,res)=>{
+    let result=await Product.updateOne(
+        {
+            _id:req.params.id
+        },
+        {
+            $set:req.body
+        }
+    )
+    res.send(result);
 })
 
 
