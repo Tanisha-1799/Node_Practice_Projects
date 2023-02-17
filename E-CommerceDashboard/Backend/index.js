@@ -57,7 +57,7 @@ app.post('/add-product',verifyToken,async (req,res)=>{
 
 
 //api to display  the product list from the database
-app.get('/products',async (req,res)=>{
+app.get('/products',verifyToken,async (req,res)=>{
     let products=await Product.find();
     if(products.length>0){
         res.send(products)
@@ -70,14 +70,14 @@ app.get('/products',async (req,res)=>{
 
 
 //Api to delete a specific product from database
-app.delete("/product/:id",async (req,res)=>{
+app.delete("/product/:id",verifyToken,async (req,res)=>{
    
     const result=await Product.deleteOne({_id:req.params.id});
     res.send(result);
 });
 
 //Api to get the product that has a specific id
-app.get("/product/:id",async (req,res)=>{
+app.get("/product/:id",verifyToken,async (req,res)=>{
     let result=await Product.findOne({_id:req.params.id});
     if(result){
         res.send(result);
@@ -87,7 +87,7 @@ app.get("/product/:id",async (req,res)=>{
 });
 
 //api to update the product
-app.put("/product/:id",async (req,res)=>{
+app.put("/product/:id",verifyToken,async (req,res)=>{
     let result=await Product.updateOne(
         {
             _id:req.params.id
