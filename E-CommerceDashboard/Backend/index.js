@@ -49,7 +49,7 @@ app.post("/login",async (req,res)=>{
 
 
 //API to add products to the database
-app.post('/add-product',async (req,res)=>{
+app.post('/add-product',verifyToken,async (req,res)=>{
     let product=new Product(req.body);
     let result=await product.save();
     res.send(result);
@@ -99,7 +99,7 @@ app.put("/product/:id",async (req,res)=>{
     res.send(result);
 });
 
-app.get("/search/:key",async (req,res)=>{
+app.get("/search/:key",verifyToken,async (req,res)=>{
     let result=await Product.find({
         "$or":[
             {name:{$regex:req.params.key}},
@@ -109,7 +109,30 @@ app.get("/search/:key",async (req,res)=>{
         ]
     });
     res.send(result);
-})
+});
+
+
+//making a middleware to verify authentication token
+//middleware always have three parameters
+function verifyToken(req,res,next){
+    let token=req.headers['authorization'];
+    if(token){
+        token=token.split(' ')[1];
+        Jwt.verify(token, jwtKey,(err,valid)=>{
+            if(err){
+                res.status(401).send("Please proide valid token with header");
+            }else{
+                next();
+            }
+        });
+
+    }else{
+        res.status(403).send("Please add token with header");
+    }
+    //console.warn("middleware called",token);
+   
+
+}
 
 
 app.listen(5000);
